@@ -9,8 +9,8 @@ def stringify(value, replacer=' ', spaces_count=1):
         indent = replacer * spaces_count
         result = '{\n'
         for k, v in value.items():
-            result += f'{indent}{k}: {stringify(v, replacer, spaces_count+1)}\n'
-        result += f'{replacer * (spaces_count-1)}}}'
+            result += f'{indent}{k}: {stringify(v, replacer, spaces_count+2)}\n'
+        result += f'{replacer * (spaces_count-2)}}}'
         return result
     else:
         raise ValueError(f'Unsupported value type: {type(value)}')
