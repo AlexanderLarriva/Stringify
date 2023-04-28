@@ -1,0 +1,19 @@
+#.gitignore
+
+#ignore dependencies
+.venv/
+
+#ignore cache
+__pycache__/
+
+#ignore .json
+# *.json
+.vscode/launch.json
+
+#ignore dist
+dist/
+*.whl
+*.gz
+
+#ignore .vscode
+.vscode/
