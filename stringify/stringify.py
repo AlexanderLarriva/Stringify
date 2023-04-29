@@ -9,7 +9,8 @@ def stringify(value, replacer=' ', spaces_count=1, _level=1):
         indent = replacer * spaces_count * _level
         result = '{\n'
         for k, v in value.items():
-            result += f'{indent}{k}: {stringify(v, replacer, spaces_count, _level+1)}\n'
+            result += f'{indent}{k}: '
+            result += f'{stringify(v, replacer, spaces_count, _level+1)}\n'
         result += f'{replacer * spaces_count * (_level - 1)}}}'
         return result
     else:
