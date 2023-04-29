@@ -17,3 +17,5 @@ dist/
 
 #ignore .vscode
 .vscode/
+
+mmm.py

@@ -15,14 +15,16 @@ def read(file_path):
         result = f.read()
     return result
 
-# Создаем несколько тестовых значений примитивных типов данных для проверки функции stringify()
+# Создаем несколько тестовых значений примитивных типов 
+# данных для проверки функции stringify()
 primitives = {
     "string": "value",
     "boolean": True,
     "number": 5,
 }
 
-# Создаем сложную вложенную структуру данных для проверки функции stringify()
+# Создаем сложную вложенную структуру данных 
+# для проверки функции stringify()
 nested = {
     "string": "value",
     "boolean": True,
@@ -42,7 +44,8 @@ nested = {
 }
 
 # Создаем список тестовых случаев для проверки функции stringify()
-# Каждый случай содержит три параметра: заменитель (replacer), количество пробелов (spases_count) и индекс 
+# Каждый случай содержит три параметра: заменитель (replacer), 
+# количество пробелов (spases_count) и индекс 
 # соответствующей строки в файлах plain.txt и nested.txt
 cases = [
     ('|-', 1, 0),  # первый уровень вложенности, 1 пробел
@@ -51,9 +54,11 @@ cases = [
 ]
 
 # Тест функции stringify() на примитивных типах данных
-# Проверяем, что функция правильно преобразует строку, логическое значение и число в строку
+# Проверяем, что функция правильно преобразует строку, 
+# логическое значение и число в строку
 @pytest.mark.parametrize("value", primitives.values())
 def test_primitives(value):
+    
     assert stringify(value) == str(value)
 
 plain_data = read(get_fixture_path('plain.txt')).rstrip().split('\n\n\n')
@@ -63,7 +68,7 @@ nested_data = read(get_fixture_path('nested.txt')).rstrip().split('\n\n\n')
 # Проверяем, что функция правильно преобразует словарь с вложенными словарями и списками в строку с заданным 
 # количеством пробелов и заменителями
 @pytest.mark.parametrize("replacer,spases_count,case_index", cases)
-def test_plain(replacer, spases_count, case_index):
+def test_nested(replacer, spases_count, case_index):
     expected = nested_data[case_index]
     assert stringify(nested, replacer, spases_count) == expected
 
@@ -71,7 +76,7 @@ def test_plain(replacer, spases_count, case_index):
 # Проверяем, что функция правильно преобразует словарь с примитивными типами данных в строку с заданным 
 # количеством пробелов и заменителями
 @pytest.mark.parametrize("replacer,spases_count,case_index", cases)
-def test_nested(replacer, spases_count, case_index):
+def test_plain(replacer, spases_count, case_index):
     expected = plain_data[case_index]
     assert stringify(primitives, replacer, spases_count) == expected
 
